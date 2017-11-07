@@ -1,56 +1,128 @@
 {
-  "name": "videogular2-showroom",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
-    "aot": "ng serve --prod --aot --env=prod",
-    "build": "ng build --prod --aot --env=prod --bh /videogular2-showroom/",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^4.3.0",
-    "@angular/compiler": "^4.3.0",
-    "@angular/core": "^4.3.0",
-    "@angular/forms": "^4.3.0",
-    "@angular/http": "^4.3.0",
-    "@angular/platform-browser": "^4.3.0",
-    "@angular/platform-browser-dynamic": "^4.3.0",
-    "@angular/router": "^4.3.0",
-    "aframe": "0.4.0",
-    "aframe-animation-component": "3.0.4",
-    "aframe-bmfont-text-component": "0.1.4",
-    "angulartics2": "2.2.2",
-    "core-js": "^2.4.1",
-    "dashjs": "2.5.0",
-    "hls.js": "0.6.10",
-    "rxjs": "^5.4.2",
-    "videogular2": "5.6.2",
-    "vivus": "0.4.1",
-    "zone.js": "^0.8.4"
-  },
-  "devDependencies": {
-    "@angular/cli": "1.4.3",
-    "@angular/compiler-cli": "4.4.4",
-    "@types/core-js": "0.9.41",
-    "@types/jasmine": "2.5.38",
-    "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.1.0",
-    "ts-node": "~2.0.0",
-    "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
-  }
+    "name": "videogular2",
+    "version": "0.0.0-semantically-released",
+    "description": "Videogular is a video application framework for desktop and mobile powered by Angular 2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/videogular/videogular2"
+    },
+    "dependencies": {
+        "core-js": "2.4.1",
+        "reflect-metadata": "0.1.10",
+        "rxjs": "5.5.2",
+        "systemjs": "0.20.9",
+        "zone.js": "0.8.14"
+    },
+    "devDependencies": {
+        "@angular/animations": "5.0.0",
+        "@angular/common": "5.0.0",
+        "@angular/compiler": "5.0.0",
+        "@angular/compiler-cli": "5.0.0",
+        "@angular/core": "5.0.0",
+        "@angular/platform-browser": "5.0.0",
+        "@angular/platform-browser-dynamic": "5.0.0",
+        "@angular/platform-server": "5.0.0",
+        "@types/core-js": "0.9.35",
+        "@types/jasmine": "2.5.38",
+        "codelyzer": "~3.2.0",
+        "commitizen": "2.9.6",
+        "cz-conventional-changelog": "2.0.0",
+        "es6-module-loader": "0.17.11",
+        "http-server": "0.10.0",
+        "husky": "0.13.4",
+        "jasmine-core": "2.5.2",
+        "karma": "1.5.0",
+        "karma-chrome-launcher": "^2.1.1",
+        "karma-coverage": "1.1.1",
+        "karma-jasmine": "1.1.0",
+        "karma-spec-reporter": "0.0.30",
+        "parallelshell": "2.0.0",
+        "remap-istanbul": "0.9.5",
+        "rimraf": "2.6.1",
+        "semantic-release": "6.3.2",
+        "tslint": "5.0.0",
+        "typescript": "2.4.2",
+        "validate-commit-msg": "2.12.1",
+        "watch": "1.0.2"
+    },
+    "scripts": {
+        "commitmsg": "validate-commit-msg",
+        "prebuild": "npm run clean",
+        "build": "ngc",
+        "postbuild": "npm test",
+        "build:travis": "ngc",
+        "postbuild:travis": "npm run test",
+        "clean": "rimraf -rf ./src/**/*.js && rimraf -rf ./src/**/*.d.ts && rimraf -rf ./compiled",
+        "precommit": "npm test",
+        "commit": "git-cz",
+        "coverage": "http-server -c-1 -o -s -p 9875 ./coverage",
+        "start": "parallelshell \"npm run watch:ts\" \"npm run start:coverage-server\"",
+        "start:coverage-server": "http-server -c-1 -o -p 9875 ./coverage",
+        "test": "karma start karma.conf.js",
+        "posttest": "remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
+        "report-coverage": "cat ./coverage/lcov.info | codecov",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+        "watch:ts": "watch \"npm run build\" src",
+        "parallelshell": "parallelshell",
+        "lint": "tslint '**/*.ts' -e 'node_modules/**/*' -e 'compiled/**/**'  --fix --noUnusedParameters --noUnusedLocals"
+    },
+    "engines": {
+        "node": ">= 4"
+    },
+    "keywords": [
+        "video",
+        "player",
+        "framework",
+        "angular2",
+        "javascript"
+    ],
+    "author": "Raúl Jiménez <elecash@gmail.com>",
+    "contributors": [
+        {
+            "name": "Alberto García",
+            "email": "cernhelm@gmail.com"
+        },
+        {
+            "name": "Joan Llenas Masó",
+            "email": "joan.llenas.maso@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/videogular/videogular2/issues"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        },
+        "validate-commit-msg": {
+            "types": [
+                "feat",
+                "fix",
+                "docs",
+                "style",
+                "refactor",
+                "perf",
+                "test",
+                "chore",
+                "revert",
+                "ci"
+            ],
+            "scope": {
+                "required": true,
+                "allowed": [
+                    "*"
+                ],
+                "validate": true,
+                "multiple": false
+            },
+            "warnOnFail": false,
+            "maxSubjectLength": 100,
+            "subjectPattern": ".+",
+            "subjectPatternErrorMsg": "subject does not match subject pattern!",
+            "helpMessage": "",
+            "autoFix": false
+        }
+    },
+    "homepage": "http://videogular.com"
 }

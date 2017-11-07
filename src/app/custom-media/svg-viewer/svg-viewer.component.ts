@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, SimpleChanges, OnDestroy } from '@angular/core';
+import {Component, OnInit, ElementRef, Input, SimpleChanges, OnDestroy, Inject} from '@angular/core';
 import { IPlayable, IMediaSubscriptions } from 'videogular2/src/core/vg-media/i-playable';
 import { VgStates, VgEvents } from 'videogular2/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -34,9 +34,10 @@ export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
     vivus: any;
     timer: Observable<number>;
     timerSubs: Subscription;
+    ref: ElementRef;
 
-    constructor(private ref: ElementRef) {
-        this.elem = ref.nativeElement;
+    constructor(@Inject(this.ref): ElementRef) {
+        this.elem = this.ref.nativeElement;
         this.id = this.elem.id;
     }
 
