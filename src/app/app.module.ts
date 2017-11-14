@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './routes/routes';
@@ -17,7 +16,8 @@ import { StreamingPlayerModule } from './streaming-player/streaming-player.modul
 import { MultiplePlayersModule } from './multiple-players/multiple-players.module';
 import { CustomMediaModule } from './custom-media/custom-media.module';
 import { SmartPlaylistModule } from './smart-playlist/smart-playlist.module';
-import { Angulartics2GoogleAnalytics, Angulartics2Module } from 'angulartics2';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 
 @NgModule({
@@ -27,11 +27,9 @@ import { Angulartics2GoogleAnalytics, Angulartics2Module } from 'angulartics2';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
         HttpClientModule,
         RouterModule.forRoot(ROUTES, { useHash: true }),
         Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
-
         SimplePlayerModule,
         SinglePlayerModule,
         AudioPlayerModule,
@@ -44,7 +42,7 @@ import { Angulartics2GoogleAnalytics, Angulartics2Module } from 'angulartics2';
         CustomMediaModule,
         SmartPlaylistModule
     ],
-    providers: [],
+    providers: [HttpClient],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {

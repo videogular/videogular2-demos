@@ -34,14 +34,15 @@ export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
     vivus: any;
     timer: Observable<number>;
     timerSubs: Subscription;
-    ref: ElementRef;
+    // ref: ElementRef;
 
-    constructor(@Inject(this.ref): ElementRef) {
-        this.elem = this.ref.nativeElement;
-        this.id = this.elem.id;
+
+    constructor(private ref: ElementRef) {
     }
 
     ngOnInit() {
+        this.elem = this.ref.nativeElement;
+        this.id = this.elem.id;
         this.timer = TimerObservable.create(0, 10);
         this.vivus = new Vivus(
             'container',
