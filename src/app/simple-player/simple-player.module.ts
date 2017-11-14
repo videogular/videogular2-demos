@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { SimplePlayerComponent } from "./simple-player.component";
-import { VgCoreModule } from 'videogular2/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SimplePlayerComponent } from './simple-player.component';
+import { VgCoreModule } from 'videogular2-betatester/core';
 
 @NgModule({
     imports: [

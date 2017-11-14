@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { GoogleImaPlayerComponent } from "./google-ima-player.component";
-import { VgCoreModule } from "videogular2/core";
-import { VgControlsModule } from "videogular2/controls";
-import { VgOverlayPlayModule } from "videogular2/overlay-play";
-import { VgImaAdsModule } from "videogular2/ima-ads";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GoogleImaPlayerComponent } from './google-ima-player.component';
+import { VgCoreModule } from 'videogular2-betatester/core';
+import { VgControlsModule } from 'videogular2-betatester/controls';
+import { VgOverlayPlayModule } from 'videogular2-betatester/overlay-play';
+import { VgImaAdsModule } from 'videogular2-betatester/ima-ads';
 
 @NgModule({
     imports: [
