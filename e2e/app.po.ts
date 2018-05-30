@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Videogular2ShowroomPage {
+export class videogular2ShowroomPage {
   navigateTo() {
     return browser.get('/');
   }
