@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, Input, SimpleChanges, OnDestroy } from '@angular/core';
 import { IPlayable, IMediaSubscriptions } from 'videogular2/src/core/vg-media/i-playable';
-import { VgStates, VgEvents } from 'videogular2/core';
+import { VgStates, VgEvents, VgMediaElement } from 'videogular2/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
@@ -12,12 +12,9 @@ export declare let Vivus;
     templateUrl: './svg-viewer.component.html',
     styleUrls: [ './svg-viewer.component.css' ]
 })
-export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
-    id: string;
-    elem: any;
+export class SvgViewerComponent extends VgMediaElement implements OnInit, OnDestroy, IPlayable {
     time: any = { current: 0, total: 0, left: 0 };
     buffer: any = { end: 0 };
-    buffered: any = { length: 1, end: end => 0 };
     canPlay: boolean = false;
     canPlayThrough: boolean = false;
     isMetadataLoaded: boolean = false;
@@ -35,6 +32,8 @@ export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
     timerSubs: Subscription;
 
     constructor(private ref: ElementRef) {
+        super();
+
         this.elem = ref.nativeElement;
         this.id = this.elem.id;
     }
@@ -94,6 +93,8 @@ export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
         this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAY));
         this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAYING));
         this.timerSubs = this.timer.subscribe(this.onProgress.bind(this));
+
+        return null;
     }
 
     set currentTime(seconds) {
