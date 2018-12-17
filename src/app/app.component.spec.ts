@@ -3,7 +3,7 @@
 import { TestBed, async } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 
-describe('App: Videogular2Showroom', () => {
+describe('App: videogular2Showroom', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [

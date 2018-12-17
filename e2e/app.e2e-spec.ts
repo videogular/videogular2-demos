@@ -1,10 +1,10 @@
-import { Videogular2ShowroomPage } from './app.po';
+import { videogular2ShowroomPage } from './app.po';
 
 describe('videogular2-showroom App', () => {
-  let page: Videogular2ShowroomPage;
+  let page: videogular2ShowroomPage;
 
   beforeEach(() => {
-    page = new Videogular2ShowroomPage();
+    page = new videogular2ShowroomPage();
   });
 
   it('should display message saying app works', () => {
